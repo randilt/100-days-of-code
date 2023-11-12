@@ -1,0 +1,66 @@
+celebrity_popularity = {
+    'Mahela Jayawardene': {'popularity': 85, 'info': 'Sri Lankan cricketer, former captain.'},
+    'Kumar Sangakkara': {'popularity': 88, 'info': 'Sri Lankan cricketer, sports commentator.'},
+    'Tom Hanks': {'popularity': 92, 'info': 'Acclaimed actor, known for roles in Forrest Gump, Cast Away.'},
+    'Serena Williams': {'popularity': 87, 'info': 'Tennis legend, multiple Grand Slam champion.'},
+    'Cristiano Ronaldo': {'popularity': 95, 'info': 'Football superstar, one of the greatest goal-scorers.'},
+    'Beyoncé': {'popularity': 94, 'info': 'Iconic singer, actress, and producer.'},
+    'Leonardo DiCaprio': {'popularity': 89, 'info': 'Oscar-winning actor, environmental activist.'},
+    'Lionel Messi': {'popularity': 96, 'info': 'Football legend, widely regarded as one of the best.'},
+    'Jennifer Lawrence': {'popularity': 90, 'info': 'Award-winning actress, known for The Hunger Games.'},
+    'Usain Bolt': {'popularity': 88, 'info': 'Legendary sprinter, fastest man in the world.'}
+}
+
+
+
+import random
+
+def get_random_celeb():
+  celebrity, popularity = random.choice(list(celebrity_popularity.items()))
+  return celebrity,popularity
+
+
+celebrity_first = get_random_celeb()
+celebrity_second = get_random_celeb()
+user_guessed_right = True
+
+score = 0
+def check_user_choice(user_guess):
+  global score 
+  global user_guessed_right
+  if user_choice.lower() == 'a':
+    user_celebrity_choice = int(celebrity_first[1]['popularity'])
+    remaining_celebrity_choice = int(celebrity_second[1]['popularity'])
+  elif user_choice.lower() == 'b':
+    user_celebrity_choice = int(celebrity_second[1]['popularity'])
+    remaining_celebrity_choice = int(celebrity_first[1]['popularity'])
+  
+  if user_celebrity_choice >= remaining_celebrity_choice:
+    score = score + 1
+    print(f"You guessed right! Your score is: {score}")
+
+    
+  else:
+    print(f"You guessed wrong. Finale score is: {score}")
+    user_guessed_right = False
+
+
+
+while user_guessed_right:
+  
+  celebrity_first = get_random_celeb()
+  celebrity_second = get_random_celeb()
+  
+  print(f"Compare A: {celebrity_first[0]}, {celebrity_first[1]['info']}")
+  print("""
+         _    __    
+        | |  / /____
+        | | / / ___/
+        | |/ (__  ) 
+        |___/____(_)
+        """)
+  
+  print(f"Compare B: {celebrity_second[0]}, {celebrity_second[1]['info']}")
+  
+  user_choice = input("Who is more popular in Sri Lanka? Type 'A' or 'B' : ")
+  check_user_choice(user_choice)
